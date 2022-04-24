@@ -28,6 +28,7 @@ const userSchema = new Schema({
 },
 { timestamps: true })
 
+// Hash the user password before save it
 userSchema.pre('save', async function (next) {
   const user = this as UserDocument
   const saltWorkFactor = config.get<number>('saltWorkFactor')
